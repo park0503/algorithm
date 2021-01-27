@@ -35,4 +35,5 @@ for i in range(0, n - 7):
             temp = 64 - temp
         if temp < minimum:
             minimum = temp
+        print(minimum)
 print(minimum)
