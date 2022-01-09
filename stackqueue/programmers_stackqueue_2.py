@@ -1,15 +1,21 @@
-def solution(progresses, speeds):
-    answer = []
-    while progresses:
-        works = 0
-        for i in range(len(progresses)):
-            progresses[i] += speeds[i]
-        while progresses[0] >= 100:
-            progresses.pop(0)
-            speeds.pop(0)
-            works += 1
-            if len(progresses) == 0:
+from collections import deque
+
+
+def solution(priorities, location):
+    priorities = deque(priorities)
+    maxElement = max(priorities)
+    # any를 쓴다면 max를 안 써도 될 것.
+    outCount = 0
+    while len(priorities) > 0:
+        current = priorities.popleft()
+        # deque를 씀으로써 pop(0) 때 들던 시간 복잡도O(n)를 줄일 수 있었다.
+        if current < maxElement:
+            priorities.append(current)
+        else:
+            outCount += 1
+            if location == 0:
+                answer = outCount
                 break
-        if works != 0:
-            answer.append(works)
+            maxElement = max(priorities)
+        location = len(priorities) - 1 if location == 0 else location - 1
     return answer
