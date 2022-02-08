@@ -13,8 +13,6 @@ def main():
     result = 0
     while left <= right:
         mid = (left + right) // 2
-        if mid == 0:
-            mid = 1
         temp = 0
         for lan in lans:
             temp += lan // mid
