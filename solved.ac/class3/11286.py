@@ -16,9 +16,9 @@ def main():
                 result.append(temp[0] * temp[1])
         else:
             if x > 0:
-                a.append((x, 1))
+                heapq.heappush(a, (x, 1))
             elif x < 0:
-                a.append((abs(x), -1))
+                heapq.heappush(a, (-x, -1))
     for el in result:
         print(el)
 
