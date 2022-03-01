@@ -24,10 +24,7 @@ def main():
                         break
     for i in range(n):
         for j in range(n):
-            if graph[i][j] > 0:
-                print(1, end=" ")
-            else:
-                print(0, end=" ")
+            print(int(graph[i][j]), end=" ")
         print("")
 
 
