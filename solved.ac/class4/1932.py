@@ -7,13 +7,16 @@ def main():
     for _ in range(n):
         tri.append(list(map(int, sys.stdin.readline().split())))
     dp = []
-    dp[0] = tri[0]
-    for i in range(1, n - 1):
+    dp.append(tri[0])
+    for i in range(n - 1):
         temp = []
-        for j in range(i):
-            temp.append(min(tri[i - 1][j], tri[i - 1][j + 1]))
-        dp[i].append(temp)
-    print(dp)
+        temp.append(dp[i][0] + tri[i + 1][0])
+        for j in range(1, i + 1):
+            temp.append(max(dp[i][j - 1] + tri[i + 1]
+                        [j], dp[i][j] + tri[i + 1][j]))
+        temp.append(dp[i][-1] + tri[i + 1][-1])
+        dp.append(temp)
+    print(max(dp[n - 1]))
 
 
 main()
